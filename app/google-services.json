@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "658287216536",
+    "project_id": "hakaton-502f4",
+    "storage_bucket": "hakaton-502f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658287216536:android:e19a4157ac97153d4f8ded",
+        "android_client_info": {
+          "package_name": "com.example.hakatonapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658287216536-ahq4c4ta7dordcin9rg8epjfvqkve2kl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hakatonapp",
+            "certificate_hash": "a2918d9fb36c8b740398ed76dbd3e55188f2ad50"
+          }
+        },
+        {
+          "client_id": "658287216536-it0jvtm6gvc7o0bfbl4ftsahh6heahrl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa2GADfA6T0L7bTYXlYmarPumm_cnJEGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658287216536-it0jvtm6gvc7o0bfbl4ftsahh6heahrl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
