@@ -61,14 +61,16 @@ public class AuthFragment extends Fragment {
 
 
         btn_log.setOnClickListener(v->{
-            if(login_text.getText().toString()!=null && login_text.getText().toString().equals("")
-                    && pass_text.getText().toString() != null && pass_text.getText().toString().equals(""))
+            if(login_text.getText().toString()!=null && !login_text.getText().toString().equals("")
+                    && pass_text.getText().toString() != null && !pass_text.getText().toString().equals(""))
             {
                 auth.signInWithEmailAndPassword(login_text.getText().toString(), pass_text.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isComplete()) {
                             Toast.makeText(getActivity(), "Good", Toast.LENGTH_SHORT).show();
+
+
                         }
                     }
                 });

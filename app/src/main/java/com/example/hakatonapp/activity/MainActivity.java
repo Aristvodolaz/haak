@@ -7,10 +7,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.hakatonapp.R;
 import com.example.hakatonapp.fragment.AuthFragment;
+import com.example.hakatonapp.fragment.StartFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,14 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private FirebaseAuth auth;
-    Button btn_log;
+    FrameLayout container;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.start_layout);
-        btn_log.setOnClickListener(v->{
-            replaceFragment(AuthFragment.newInstance(), true);
-        });
+        setContentView(R.layout.activity_main);
+        container = findViewById(R.id.container);
+
+        replaceFragment(StartFragment.newInstance(), true);
 
     }
     public void replaceFragment(Fragment fragment, boolean addToBackStack) {

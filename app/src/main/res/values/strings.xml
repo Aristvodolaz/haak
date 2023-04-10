@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Let's GO</string>
+    <string name="app_name">Let\'s GO</string>
     <string name="slogan">If you travel? Then together!</string>
     <string name="login">Log in</string>
     <string name="registration">Registration</string>

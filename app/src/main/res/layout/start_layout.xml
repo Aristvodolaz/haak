@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/fon"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orintation="vertical">
+>
     <androidx.cardview.widget.CardView
         android:background="@color/fon_for_card"
         android:layout_marginLeft="8dp"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/slogan"
                 android:gravity="center"
-                android:textSize="22dp"
+                android:textSize="22sp"
                 android:layout_marginBottom="20dp"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_log"
@@ -58,4 +58,4 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-</LinearLayout>
+</RelativeLayout>
