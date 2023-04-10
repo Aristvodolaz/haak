@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/fon"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id = "@+id/login_text"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail"
+                android:height="30dp"
+                android:background="@drawable/fon_for_auth" />
+
+            <EditText
+                android:id = "@+id/pass_text"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:height="30dp"
+                android:background="@drawable/fon_for_auth" />
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="50dp"
+                android:layout_gravity="end"
+                android:gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Забыли пароль?"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_log"
+                android:layout_marginTop="8dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="@string/login"
+                android:background="@drawable/fon_for_corners_btn"/>
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</LinearLayout>

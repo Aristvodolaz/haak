@@ -1,13 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <LianerLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orintation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+        <TextView
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="50sp"
+            android:layout_marginBottom="15dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slogan"
+                    android:gravity="center"
+                    android:textSize="22dp"
+                    android:layout_marginBottom="20dp"/>
+           <Button
+               android:layout_marginLeft="28dp"
+               android:layout_marginRight="28dp"
+               android:layout_width="match_parent"
+               android:layout_height="60dp"
+               android:layout_gravity="bottom"
+               android:text="@string/login"
+               />
 
-    </LianerLayout>
+            <Button
+                android:layout_marginLeft="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/registration"
+                android:layout_marginBottom="16dp"
+                />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
