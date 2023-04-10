@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="first_clr">#6d7eaf</color>
+    <color name="second_clr">#5B9EA4</color>
+    <color name="thred_clr">#F4F6FB</color>
+    <color name="fon">#9ad1d4</color>
+    <color name="fon_for_card">#CCccdbdc</color>
 </resources>
