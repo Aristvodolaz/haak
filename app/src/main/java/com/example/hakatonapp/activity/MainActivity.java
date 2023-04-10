@@ -2,11 +2,15 @@ package com.example.hakatonapp.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.hakatonapp.R;
+import com.example.hakatonapp.fragment.AuthFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -16,30 +20,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     private FirebaseAuth auth;
+    Button btn_log;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-//test
-
-        auth.signInWithEmailAndPassword().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isComplete()){
-                    Toast.makeText(MainActivity.this, "Good", Toast.LENGTH_SHORT).show();
-                }
-            }
+        setContentView(R.layout.start_layout);
+        btn_log.setOnClickListener(v->{
+            replaceFragment(AuthFragment.newInstance(), true);
         });
 
-        auth.createUserWithEmailAndPassword().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(MainActivity.this, "Good", Toast.LENGTH_SHORT).show();
-                } else Toast.makeText(MainActivity.this, "Bad", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
-
-    //test 
+    public void replaceFragment(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, fragment, fragment.getClass().getSimpleName());
+        if (addToBackStack) fragmentTransaction.addToBackStack(fragment.getClass().getName());
+        fragmentTransaction.commit();
+    }
 }

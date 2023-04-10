@@ -35,6 +35,7 @@
                 android:textSize="22dp"
                 android:layout_marginBottom="20dp"/>
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_log"
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
                 android:layout_width="match_parent"
