@@ -10,8 +10,11 @@ public class UserWithCarData {
     int age_driver;
     String phone;
     String email;
+    Boolean boolType;
 
-    public UserWithCarData(String name, String surname, int age, String city, String car_name, String car_num, int age_driver, String phone, String email) {
+    public UserWithCarData(String name, String surname, int age, String city,
+                           String car_name, String car_num, int age_driver,
+                           String phone, String email, Boolean boolType) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -21,6 +24,7 @@ public class UserWithCarData {
         this.age_driver = age_driver;
         this.phone = phone;
         this.email = email;
+        this.boolType = boolType;
     }
 
     public String getPhone() {
@@ -93,5 +97,13 @@ public class UserWithCarData {
 
     public void setAge_driver(int age_driver) {
         this.age_driver = age_driver;
+    }
+
+    public Boolean getBoolType() {
+        return boolType;
+    }
+
+    public void setBoolType(Boolean boolType) {
+        this.boolType = boolType;
     }
 }

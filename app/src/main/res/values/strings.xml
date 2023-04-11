@@ -12,5 +12,7 @@
     <string name="car">Машина</string>
     <string name="num_car">Номер машины</string>
     <string name="age_driver">Стаж вождения</string>
+    <string name="password">Пароль</string>
+    <string name="confPassword">Подтвердите пароль</string>
 
 </resources>

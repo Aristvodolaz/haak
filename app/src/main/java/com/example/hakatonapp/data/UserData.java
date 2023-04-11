@@ -7,18 +7,20 @@ public class UserData {
     String city;
     String phone;
     String email;
+    Boolean boolType;
 
     public UserData() {
 
     }
 
-    public UserData(String name, String surname, String age, String city, String phone, String email) {
+    public UserData(String name, String surname, String age, String city, String phone, String email, Boolean boolType) {
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.city = city;
         this.phone = phone;
         this.email = email;
+        this.boolType = boolType;
     }
 
     public String getName() {
@@ -67,5 +69,13 @@ public class UserData {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getBoolType() {
+        return boolType;
+    }
+
+    public void setBoolType(Boolean boolType) {
+        this.boolType = boolType;
     }
 }
