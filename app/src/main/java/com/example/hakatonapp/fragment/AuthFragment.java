@@ -1,5 +1,6 @@
 package com.example.hakatonapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.hakatonapp.R;
+import com.example.hakatonapp.activity.InitActivity;
 import com.example.hakatonapp.activity.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -69,7 +71,9 @@ public class AuthFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isComplete()) {
                             Toast.makeText(getActivity(), "Good", Toast.LENGTH_SHORT).show();
-
+                            Intent intent = new Intent(getActivity(), InitActivity.class);
+                            intent.putExtra("email", login_text.getText().toString());
+                            startActivity(intent);
 
                         }
                     }

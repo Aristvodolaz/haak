@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hakatonapp.R;
+import com.example.hakatonapp.fragment.MapsFragment;
 import com.example.hakatonapp.fragment.StartFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -20,7 +21,7 @@ public class InitActivity extends AppCompatActivity {
         setContentView(R.layout.init_main);
         container = findViewById(R.id.container);
 
-        replaceFragment(StartFragment.newInstance(), true);
+        replaceFragment(MapsFragment.newInstance(), true);
 
     }
     public void replaceFragment(Fragment fragment, boolean addToBackStack) {
