@@ -8,6 +8,10 @@ public class UserData {
     String phone;
     String email;
 
+    public UserData() {
+
+    }
+
     public UserData(String name, String surname, String age, String city, String phone, String email) {
         this.name = name;
         this.surname = surname;
