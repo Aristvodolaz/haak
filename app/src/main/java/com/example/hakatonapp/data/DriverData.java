@@ -4,22 +4,31 @@ public class DriverData {
 
     String name;
     String surname;
-    int age;
-    int mest;
-    String price;
+    String phone;
     String whereFrom;
     String where;
+    String numCar;
+    String car;
+    String age;
+    String price;
     String date;
+    String mest;
 
-    public DriverData(String name, String surname, int age, int mest, String price, String whereFrom, String where, String date) {
+    public DriverData() {
+    }
+
+    public DriverData(String name, String surname, String phone, String whereFrom, String where, String numCar, String car, String age, String price, String date, String mest) {
         this.name = name;
         this.surname = surname;
-        this.age = age;
-        this.mest = mest;
-        this.price = price;
+        this.phone = phone;
         this.whereFrom = whereFrom;
         this.where = where;
+        this.numCar = numCar;
+        this.car = car;
+        this.age = age;
+        this.price = price;
         this.date = date;
+        this.mest = mest;
     }
 
     public String getName() {
@@ -38,19 +47,19 @@ public class DriverData {
         this.surname = surname;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
-    public int getMest() {
+    public String getMest() {
         return mest;
     }
 
-    public void setMest(int mest) {
+    public void setMest(String mest) {
         this.mest = mest;
     }
 
