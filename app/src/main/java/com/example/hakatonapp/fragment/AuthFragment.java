@@ -1,5 +1,6 @@
 package com.example.hakatonapp.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.hakatonapp.R;
+import com.example.hakatonapp.activity.InitActivity;
 import com.example.hakatonapp.activity.MainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,14 +63,18 @@ public class AuthFragment extends Fragment {
 
 
         btn_log.setOnClickListener(v->{
-            if(login_text.getText().toString()!=null && login_text.getText().toString().equals("")
-                    && pass_text.getText().toString() != null && pass_text.getText().toString().equals(""))
+            if(login_text.getText().toString()!=null && !login_text.getText().toString().equals("")
+                    && pass_text.getText().toString() != null && !pass_text.getText().toString().equals(""))
             {
                 auth.signInWithEmailAndPassword(login_text.getText().toString(), pass_text.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isComplete()) {
                             Toast.makeText(getActivity(), "Good", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getActivity(), InitActivity.class);
+                            intent.putExtra("email", login_text.getText().toString());
+                            startActivity(intent);
+
                         }
                     }
                 });

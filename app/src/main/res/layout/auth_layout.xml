@@ -40,6 +40,33 @@
                 android:hint="Password"
                 android:height="30dp"
                 android:background="@drawable/fon_for_auth" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ещё нет аккаунта?"
+                android:layout_gravity="start"
+                android:gravity="start"/>
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="50dp"
+                android:id="@+id/regNowBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Зарегистрируйтесь"
+                android:textStyle="bold"
+                android:layout_gravity="end"
+                android:gravity="end"/>
+        </LinearLayout>
             <TextView
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="50dp"
@@ -48,6 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Забыли пароль?"/>
+
+
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_log"

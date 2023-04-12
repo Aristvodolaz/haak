@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/rodvi/hakatonAPp2/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/XboxGames/app/src/main/res/layout/activity_main.xml" value="0.12360688956433637" />
+        <entry key="..\:/XboxGames/app/src/main/res/layout/init_main.xml" value="0.10196406184705391" />
+        <entry key="..\:/XboxGames/app/src/main/res/layout/maps_layout.xml" value="0.2210144927536232" />
+        <entry key="..\:/XboxGames/app/src/main/res/layout/registration_layout.xml" value="0.1" />
+        <entry key="..\:/XboxGames/app/src/main/res/layout/start_layout.xml" value="0.1" />
       </map>
     </option>
   </component>
