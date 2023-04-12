@@ -1,5 +1,6 @@
 package com.example.hakatonapp.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,11 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hakatonapp.R;
 import com.example.hakatonapp.activity.InitActivity;
@@ -21,74 +25,113 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AuthFragment extends Fragment {
 
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://hakaton-502f4-default-rtdb.firebaseio.com/");
 
-    EditText login_text, pass_text;
-    Button btn_log;
-    private FirebaseAuth auth;
+    public AuthFragment(){
+        super(R.layout.auth_layout);
+    }
 
-    public static AuthFragment newInstance() {
+    public static Fragment newInstance() {
         return new AuthFragment();
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        return super.onCreateView(inflater, container, savedInstanceState);
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.auth_layout,container, false);
-        login_text = view.findViewById(R.id.login_text);
-        pass_text = view.findViewById(R.id.pass_text);
-        btn_log = view.findViewById(R.id.btn_log);
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view,
+                              @NonNull Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
 
-        auth =FirebaseAuth.getInstance();
-        FirebaseAuth.AuthStateListener mAuthListner = new FirebaseAuth.AuthStateListener() {
+        final EditText phone = view.findViewById(R.id.login_text);
+        final EditText password = view.findViewById(R.id.pass_text);
+        final Button loginBtn = view.findViewById(R.id.btn_log);
+        final TextView regNowBtn = view.findViewById(R.id.regNowBtn);
+        final TextView loginSms = view.findViewById(R.id.loginSms);
+        final TextView forgPass = view.findViewById(R.id.forgPass);
 
+
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
+            public void onClick(View view) {
+                final String phoneTxt = phone.getText().toString();
+                final String passwordTxt = password.getText().toString();
 
-                } else {
-                }
-            }
-        };
+                if(phoneTxt.isEmpty() || passwordTxt.isEmpty()){
+                    Toast.makeText(getActivity(), "Введите логин или пароль!",
+                            Toast.LENGTH_SHORT).show();
+                } else{
+                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.hasChild(phoneTxt)){
+                                final String getPassword = snapshot.child(phoneTxt).
+                                        child("password").getValue(String.class);
 
+                                if(getPassword.equals(passwordTxt)){
+                                    Toast.makeText(getActivity(), "Successfully login!",
+                                            Toast.LENGTH_SHORT).show();
+                                    //ToDo: сделать куда будет перебрасывать после входа
+                                    startActivity(new Intent(getActivity(),
+                                            InitActivity.class));
+                                    getActivity().finish();
+                                }else{
+                                    Toast.makeText(getActivity(), "Wrong password!",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(getActivity(), "Wrong password!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-        btn_log.setOnClickListener(v->{
-            if(login_text.getText().toString()!=null && !login_text.getText().toString().equals("")
-                    && pass_text.getText().toString() != null && !pass_text.getText().toString().equals(""))
-            {
-                auth.signInWithEmailAndPassword(login_text.getText().toString(), pass_text.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isComplete()) {
-                            Toast.makeText(getActivity(), "Good", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getActivity(), InitActivity.class);
-                            intent.putExtra("email", login_text.getText().toString());
-                            startActivity(intent);
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
                         }
-                    }
-                });
-            } else Toast.makeText(getContext(), "Введите данные для авторизации!", Toast.LENGTH_LONG).show();
-
+                    });
+                }
+            }
         });
 
-//        auth.createUserWithEmailAndPassword().addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if(task.isSuccessful()){
-//                    Toast.makeText(getActivity(), "Good", Toast.LENGTH_SHORT).show();
-//                } else Toast.makeText(getActivity(), "Bad", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        regNowBtn.setOnClickListener(new View.OnClickListener() {
+
+            //ToDo переключение на другую активность
+            @SuppressLint("ResourceType")
+            @Override
+            public void onClick(View view) {
+                replaceFragment(RegFrgament.newInstance(), true);
+            }
+        });
+
+        loginSms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(LoginBySmsFragment.newInstance(), true);
+            }
+        });
+
+        forgPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(LoginBySmsFragment.newInstance(), true);
+            }
+        });
     }
+
+    public void replaceFragment(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction fragmentTransaction =
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, fragment, fragment.getClass().getSimpleName());
+        if (addToBackStack) fragmentTransaction.addToBackStack(fragment.getClass().getName());
+        fragmentTransaction.commit();
+    }
+
 }
