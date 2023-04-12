@@ -22,11 +22,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnCameraMoveStartedListener, LocationListener {
 
     private GoogleMap googleMap;
-    SupportMapFragment mMap;
+
     Double lan, lon;
 
     public static MapsFragment newInstance() {
@@ -38,8 +39,11 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = LayoutInflater.from(getContext()).inflate(R.layout.maps_layout, container, false);
 
-        mMap = (SupportMapFragment) getFragmentManager().findFragmentById(R.id.maps);
-        mMap.getMapAsync(this);
+        ((SupportMapFragment)getActivity().getSupportFragmentManager().findFragmentById(R.id.maps)).getMapAsync(this);
+//        SupportMapFragment mapFragment = (SupportMapFragment)getChildFragmentManager()
+//                .findFragmentById(R.id.maps);
+//        mapFragment.getMapAsync(this);
+
         return v;
     }
 
@@ -47,20 +51,24 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, Google
     public void onMapReady(@NonNull GoogleMap map) {
         googleMap = map;
 
-        final LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        LatLng sydney = new LatLng(-34, 151);
+        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        builder.include(new LatLng(0,0));
-        builder.include(new LatLng(10,10));
-
-        googleMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-            @Override
-            public void onMapLoaded() {
-                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 100);
-
-                googleMap.animateCamera(cu);
-               // googleMap.getCameraPosition(lon, lan)
-            }
-        });
+//        final LatLngBounds.Builder builder = new LatLngBounds.Builder();
+//
+//        builder.include(new LatLng(0,0));
+//        builder.include(new LatLng(10,10));
+//
+//        googleMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+//            @Override
+//            public void onMapLoaded() {
+//                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(builder.build(), 100);
+//
+//                googleMap.animateCamera(cu);
+//               // googleMap.getCameraPosition(lon, lan)
+//            }
+//        });
     }
 
     @Override

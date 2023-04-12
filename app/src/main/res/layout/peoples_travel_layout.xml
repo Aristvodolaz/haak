@@ -17,7 +17,7 @@
                 android:id="@+id/back_arrow"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/backArrow"/>
+                android:src="@drawable/barrow"/>
             <TextView
                 android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
