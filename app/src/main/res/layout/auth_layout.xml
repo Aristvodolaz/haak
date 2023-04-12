@@ -2,16 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@color/fon"
+    android:background="@color/thred_clr"
     android:layout_height="match_parent">
+    <FrameLayout
+        android:id="@+id/sigin"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/second_clr">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/barrow"/>
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вход"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center|center_horizontal"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/bbb"/>
 
     <FrameLayout
+        android:id="@+id/auth"
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
+            android:layout_marginTop="60dp"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -41,7 +75,9 @@
                 android:height="30dp"
                 android:background="@drawable/fon_for_auth" />
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center"
@@ -49,36 +85,53 @@
 
             <TextView
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="50dp"
-                android:layout_marginLeft="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ещё нет аккаунта?"
-                android:layout_gravity="start"
-                android:gravity="start"/>
+                android:layout_gravity="left"
+                android:gravity="left"/>
+
             <TextView
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="50dp"
                 android:id="@+id/regNowBtn"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Зарегистрируйтесь"
                 android:textStyle="bold"
-                android:layout_gravity="end"
-                android:gravity="end"/>
+                android:layout_gravity="right"
+                android:gravity="right|end"/>
         </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/loginSms"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_gravity="end"
+                    android:gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Войти по SMS"/>
+
+
+
+
+
+
             <TextView
+                android:id="@+id/forgPass"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="50dp"
-                android:layout_gravity="end"
-                android:gravity="end"
+                android:layout_gravity="end|bottom"
+                android:gravity="end|bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Забыли пароль?"/>
 
 
-
             <androidx.appcompat.widget.AppCompatButton
+                android:layout_gravity="center"
                 android:id="@+id/btn_log"
                 android:layout_marginTop="8dp"
                 android:layout_width="100dp"

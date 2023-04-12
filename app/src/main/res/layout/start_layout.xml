@@ -4,8 +4,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/fon"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
->
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/auth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <FrameLayout
+        android:id="@+id/signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
     <androidx.cardview.widget.CardView
         android:background="@color/fon_for_card"
         android:layout_marginLeft="8dp"
@@ -34,27 +46,29 @@
                 android:gravity="center"
                 android:textSize="22sp"
                 android:layout_marginBottom="20dp"/>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_log"
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="28dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_gravity="bottom"
-                android:text="@string/login"
-                android:background="@drawable/btn_for_login"
-                />
-
-            <androidx.appcompat.widget.AppCompatButton
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
-                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_for_login"
+                android:onClick="onClick"
+                android:text="@string/login" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_sign"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="@string/registration"
+                android:layout_marginLeft="28dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="28dp"
                 android:layout_marginBottom="28dp"
                 android:background="@drawable/btn_for_reg"
-                />
+                android:onClick="onClick"
+                android:text="@string/registration" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
