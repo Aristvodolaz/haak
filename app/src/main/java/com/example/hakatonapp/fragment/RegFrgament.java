@@ -6,12 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.hakatonapp.R;
 import com.google.firebase.database.DataSnapshot;
@@ -23,16 +25,22 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RegFrgament extends Fragment{
 
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://hakaton-502f4-default-rtdb.firebaseio.com/");
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().
+            getReferenceFromUrl("https://hakaton-502f4-default-rtdb.firebaseio.com/");
 
     public RegFrgament(){
         super(R.layout.reg_layout);
+    }
+
+    public static Fragment newInstance() {
+        return new RegFrgament();
     }
 
     @Override
     public void onViewCreated(@NonNull View view,
                               @NonNull Bundle savedInstanceState){
         super.onViewCreated(view, savedInstanceState);
+
 
         final EditText firstName = view.findViewById(R.id.name_user);
         final EditText surname = view.findViewById(R.id.surname_user);
@@ -44,6 +52,7 @@ public class RegFrgament extends Fragment{
         final EditText confPasswordU = view.findViewById(R.id.conf_password_user);
         final Button registerBtn = view.findViewById(R.id.regBtn);
         final TextView loginNowBtn = view.findViewById(R.id.loginNowBtn);
+        final ImageView backArrow = view.findViewById(R.id.back_arrow);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,27 +76,28 @@ public class RegFrgament extends Fragment{
                     Toast.makeText(getActivity(), "Пароли не совпадают!",
                             Toast.LENGTH_SHORT).show();
                 } else{
-                    databaseReference.child("usersPas").addListenerForSingleValueEvent(new ValueEventListener() {
+                    databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.hasChild(phoneTxt)){
                                 Toast.makeText(getActivity(), "Phone is already exist!",
                                         Toast.LENGTH_SHORT).show();
                             } else {
-                                databaseReference.child("usersPas").child(phoneTxt).
+                                databaseReference.child("users").child(phoneTxt).
                                         child("firstName").setValue(firstNameTxt);
-                                databaseReference.child("usersPas").child(phoneTxt).
+                                databaseReference.child("users").child(phoneTxt).
                                         child("surname").setValue(surnameTxt);
-                                databaseReference.child("usersPas").child(phoneTxt).
+                                databaseReference.child("users").child(phoneTxt).
                                         child("age").setValue(ageTxt);
-                                databaseReference.child("usersPas").child(phoneTxt).
+                                databaseReference.child("users").child(phoneTxt).
                                         child("city").setValue(cityTxt);
-                                databaseReference.child("usersPas").child(phoneTxt).
+                                databaseReference.child("users").child(phoneTxt).
                                         child("email").setValue(emailTxt);
-                                databaseReference.child("usersPas").child(phoneTxt).
+                                databaseReference.child("users").child(phoneTxt).
                                         child("password").setValue(passwordTxt);
 
                                 Toast.makeText(getActivity(), "Пользователь успешно зарегистрирован!", Toast.LENGTH_SHORT).show();
+                                //ToDO должно быть переключение дальше
                                 getActivity().finish();
                             }
                         }
@@ -98,17 +108,30 @@ public class RegFrgament extends Fragment{
                         }
                     });
 
-                    loginNowBtn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            getActivity().finish();
-                        }
-                    });
+
                 }
+            }
+        });
+
+        backArrow.setOnClickListener(v->{
+            getActivity().getSupportFragmentManager().popBackStack();
+        });
+        loginNowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                replaceFragment(AuthFragment.newInstance(), true);
             }
         });
     }
 
+    public void replaceFragment(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction fragmentTransaction =
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.container, fragment, fragment.getClass().getSimpleName());
+        if (addToBackStack) fragmentTransaction.addToBackStack(fragment.getClass().getName());
+        fragmentTransaction.commit();
+    }
 }
 
 
