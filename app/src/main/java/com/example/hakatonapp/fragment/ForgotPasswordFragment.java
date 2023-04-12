@@ -1,9 +1,6 @@
 package com.example.hakatonapp.fragment;
 
 import android.os.Bundle;
-<<<<<<< HEAD
-import android.view.View;
-=======
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -11,17 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
->>>>>>> origin/main
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-<<<<<<< HEAD
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
-=======
->>>>>>> origin/main
 import com.example.hakatonapp.R;
 
 public class ForgotPasswordFragment extends Fragment {
@@ -50,7 +40,7 @@ public class ForgotPasswordFragment extends Fragment {
                 if(loginTxt.isEmpty()){
                     Toast.makeText(getActivity(), "Введите логин", Toast.LENGTH_SHORT).show();
                 } else {
-                    
+
                 }
             }
         });

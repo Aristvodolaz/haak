@@ -126,7 +126,7 @@
                         android:layout_marginRight="28dp"
                         android:background="@drawable/btn_for_login"
                         android:onClick="onClick"
-                        android:text="@string/add_driver_route" />
+                        android:text="Создать поездку" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

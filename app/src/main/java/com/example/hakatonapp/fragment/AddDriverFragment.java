@@ -1,5 +1,6 @@
 package com.example.hakatonapp.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +62,7 @@ public class AddDriverFragment extends Fragment {
         return v;
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private void initViews(){
         if (nameUser.getText()!=null)
         name = nameUser.getText().toString();

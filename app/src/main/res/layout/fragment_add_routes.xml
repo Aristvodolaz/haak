@@ -56,7 +56,7 @@
                 android:layout_marginRight="28dp"
                 android:background="@drawable/btn_for_login"
                 android:onClick="onClick"
-                android:text="@string/add_driver_route" />
+                android:text="Создать поездку" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sign"
@@ -68,7 +68,7 @@
                 android:layout_marginBottom="28dp"
                 android:background="@drawable/btn_for_reg"
                 android:onClick="onClick"
-                android:text="@string/add_passenger_route" />
+                android:text="Создать поездкур" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
